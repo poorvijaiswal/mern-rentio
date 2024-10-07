@@ -7,10 +7,12 @@ import About from './pages/About';
 import Profile from './pages/Profile';
 import LandingPage from './pages/LandingPage';
 import Meal from './pages/RentioMeal/Meal';
+import Header from './pages/RentioHome/Components/Header';
 
 export default function App() {
   return (
     <BrowserRouter>
+    <Header/>
       <Routes>
         <Route path='/' element={ <LandingPage/>} />
         <Route path='/sign-in' element={ <Signin/>} />
