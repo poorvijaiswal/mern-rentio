@@ -1,9 +1,9 @@
-import User from '../modules/user.model.js';
+import User from '../models/user.model.js';
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 export const singup =async(req,res,next) => {
-    const {username,emai,password } = req.body;
+    const {username,email,password } = req.body;
     const hashedPassword = bcryptjs.hashSync(password,10);
     const newUser = new User({ username,email,password,hashedPassword});
     try{
