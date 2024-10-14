@@ -1,21 +1,21 @@
 import User from '../models/user.model.js';
 import bcryptjs from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+/*import jwt from 'jsonwebtoken';*/
 
-export const singup = async (req, res, next) => {
+export const singup = async (req, res, ) => {
     const { username, email, password } = req.body;
-    const hashedPassword = bcryptjs.hashSync(password, 10);
-    const newUser = new User({ username, email, password, hashedPassword });
+   const hashedPassword = bcryptjs.hashSync(password, 10);
+    const newUser = new User({ username, email, password:hashedPassword});
     try {
         await newUser.save();
         res.status(201).json('User created successfully!');
 
     } catch (error) {
-        next(error);
+        res.status(500).jason(error.message);
     }
 };
 
-export const singin = async (req, res, next) => {
+/*export const singin = async (req, res, next) => {
     const { email, password } = req.body;
     try {
         const validUser = await User.findOne({ email });
@@ -26,4 +26,4 @@ export const singin = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
-}
+}*/
