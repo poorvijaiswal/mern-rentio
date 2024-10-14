@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
-    <header className='px-4 py-2 absolute flex justify-between w-full'>
+    <header className='px-4 py-2 absolute flex justify-between w-full bg-slate-200 shadow-md'>
         <Link to='/'>
-            <h1>
+            <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
                 <span className='text-red-600 sm:text-2xl font-bold text-xl'>R</span>
                 <span className='sm:text-2xl font-semibold text-xl'>entio</span>
             </h1>

@@ -21,12 +21,13 @@ app.listen(3000, () => {
 
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
-/*app.use((err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
+//creating a middleware-a request handler manipulate requests and responses before they reach route handlers
+app.use((err, req, res, next) => {                        //next -passing control to the next middleware function    
+  const statusCode = err.statusCode || 500;              //here 500 is stautus code for 'Internal Server error'
   const message = err.message || 'Internal Server Error';
-  return res.status(statusCode), json({
+  return res.status(statusCode).json({
     sucess: false,
-    statusCode,
     message,
+    statusCode,
   });
-});*/
+});
