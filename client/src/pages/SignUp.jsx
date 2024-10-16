@@ -15,6 +15,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       setLoading(true);
+      setError(false);
       const res = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: {
@@ -24,17 +25,15 @@ export default function SignUp() {
       });
       const data = await res.json();
       console.log(data);
+      setLoading(false);
       if (data.success === false) {
-        setLoading(false);
-        setError(data.message);
+        setError(true);
         return;
       }
-      setLoading(false);
-      setError(null);
       navigate('/sign-in');
     } catch (error) {
       setLoading(false);
-      setError(error.message);
+      setError(true);
     }
   };
   return (
@@ -62,7 +61,7 @@ export default function SignUp() {
           id='password'
           onChange={handleChange}
         />
-        <button disable={loading} className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>  {loading ? 'Loading...' : 'Sign Up'}</button>
+        <button disabled={loading} className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>  {loading ? 'Loading...' : 'Sign Up'}</button>
         </form>
         <div className='flex gap-2 mt-5'>
         <p>Have an account?</p>
@@ -70,7 +69,7 @@ export default function SignUp() {
           <span className='text-blue-700'>Sign in</span>
         </Link>
       </div>
-      {error && <p className='text-red-500 mt-5'>{error}</p>}
+      <p className='text-red-700 mt-5'>{error && 'Something went wrong!'}</p>
     </div>
   );
 }
