@@ -7,7 +7,7 @@ import About from './pages/About';
 import Profile from './pages/Profile';
 import LandingPage from './pages/LandingPage';
 import Meal from './pages/RentioMeal/Meal';
-import Header from './pages/RentioHome/Components/Header';
+import Header from './pages/RentioHome/components/Header';
 
 export default function App() {
   return (
