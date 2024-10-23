@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/RentioHome/Home';
 import SignIn from './pages/Signin';
@@ -19,12 +18,12 @@ export default function App() {
         <Route path='/sign-in' element={ <SignIn/>} />
         <Route path='/sign-up' element={ <SignUp/>} />
         <Route path='/about' element={ <About/>} />
-        <Route element={<PrivateRoute />} >
-        <Route path='/profile' element={ <Profile/>} />  
-        </Route>       
+        <Route element={<PrivateRoute />}>
+          <Route path='/profile' element={<Profile />} />
+        </Route>
         <Route path='/meals' element={ <Meal/>} />         
         <Route path='/homes' element={ <Home/>} />         
       </Routes>
     </BrowserRouter>
-  )
+  );
 }

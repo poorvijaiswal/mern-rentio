@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
@@ -18,18 +17,17 @@ export default function Header() {
             <Link to='/about'><li className='hidden sm:block hover:underline hover:text-red-600 cursor-pointer hover:bg-blue-50 px-2 py-1 hover:rounded-lg'>About</li></Link>
             <Link to='/profile'>
             {currentUser ? (
-                <img
+              <img
                 className='rounded-full h-7 w-7 object-cover'
                 src={currentUser.avatar}
                 alt='profile'
               />
-
-            ): (
+            ) : (
             <li className='sm:block hover:underline hover:text-red-600 cursor-pointer hover:bg-blue-50 px-2 py-1 hover:rounded-lg'>Sign in</li>
             )}
             </Link>
         </ul>
-        </div>
+      </div>
     </header>
   );
 }
