@@ -6,7 +6,7 @@ import {
   signInSuccess,
   signInFailure,
 } from '../redux/user/userSlice';
-import OAuth from './RentioHome/Components/OAuth.jsx';
+import OAuth from './RentioHome/components/OAuth.jsx';
 
 
 export default function SignIn() {

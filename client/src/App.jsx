@@ -5,6 +5,7 @@ import SignIn from './pages/Signin';
 import SignUp from './pages/SignUp';
 import About from './pages/About';
 import Profile from './pages/Profile';
+import PrivateRoute from './pages/RentioHome/components/PrivateRoute';
 import LandingPage from './pages/LandingPage';
 import Meal from './pages/RentioMeal/Meal';
 import Header from './pages/RentioHome/components/Header';
@@ -18,7 +19,9 @@ export default function App() {
         <Route path='/sign-in' element={ <SignIn/>} />
         <Route path='/sign-up' element={ <SignUp/>} />
         <Route path='/about' element={ <About/>} />
-        <Route path='/profile' element={ <Profile/>} />         
+        <Route element={<PrivateRoute />} >
+        <Route path='/profile' element={ <Profile/>} />  
+        </Route>       
         <Route path='/meals' element={ <Meal/>} />         
         <Route path='/homes' element={ <Home/>} />         
       </Routes>
