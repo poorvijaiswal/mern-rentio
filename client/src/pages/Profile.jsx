@@ -8,7 +8,8 @@ import {
   updateUserFailure,
   deleteUserFailure,
   deleteUserStart,
-  deleteUserSuccess
+  deleteUserSuccess,
+  signOutUserStart,
 } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 
@@ -100,9 +101,23 @@ export default function Profile() {
       dispatch(deleteUserFailure(error.message));
     }
   };
+  const handleSignOut = async () => {
+    try {
+      dispatch(signOutUserStart());
+      const res = await fetch('/api/auth/signout');
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch (error) {
+      dispatch(deleteUserFailure(data.message));
+    }
+  };
 
   return (
-    <div className='p-3 max-w-lg mx-auto absolute top-[120px] w-full left-[50%] translate-x-[-50%]'>
+    <div className='p-3 max-w-lg mx-auto absolute top-[90px] w-full left-[50%] translate-x-[-50%]'>
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
       <form  onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
@@ -162,11 +177,11 @@ export default function Profile() {
         </button>
         </form>
         <div className='flex justify-between mt-5'>
-        <span  onClick={handleDeleteUser} className='text-red-700 cursor-pointer'>
-          Delete Account
+        <span  onClick={handleDeleteUser} className='text-red-800 cursor-pointer hover:underline'>
+          <b>Delete Account</b>
         </span>
-        <span className='text-red-700 cursor-pointer'>
-          Sign out
+        <span onClick={handleSignOut} className='text-red-800 cursor-pointer hover:underline'>
+          <b>Sign out</b>
         </span>
       </div>
       <p className='text-red-700 mt-5'>{error ? error : ''}</p>
