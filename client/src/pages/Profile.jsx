@@ -115,10 +115,16 @@ export default function Profile() {
       dispatch(deleteUserFailure(data.message));
     }
   };
-
   return (
     <div className='p-3 max-w-lg mx-auto absolute top-[90px] w-full left-[50%] translate-x-[-50%]'>
-      <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
+    <h1 className='text-3xl text-center mb-5' style={{
+    fontSize: '30px',
+    fontWeight: 700,
+    fontFamily: 'Roboto,sans-serif'
+  }}>Profile</h1>
+    <div className='p-6 border border-gray-300 shadow-lg rounded-lg bg-white' style={{
+    boxShadow: '0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24)',
+  }}>
       <form  onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           type='file'
@@ -145,6 +151,7 @@ export default function Profile() {
           ) : (
             ''
           )}
+          
         </p>
         <input
           type='text'
@@ -188,6 +195,7 @@ export default function Profile() {
       <p className='text-green-700 mt-5'>
         {updateSuccess ? 'User is updated successfully!' : ''}
       </p>
+      </div>
     </div>
   );
 

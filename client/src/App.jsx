@@ -8,6 +8,8 @@ import PrivateRoute from './pages/RentioHome/components/PrivateRoute';
 import LandingPage from './pages/LandingPage';
 import Meal from './pages/RentioMeal/Meal';
 import Header from './pages/RentioHome/components/Header';
+import ForgetPassw from './pages/ForgotPassw';
+import ResetPassword from './pages/ResetPassword';
 
 export default function App() {
   return (
@@ -22,7 +24,10 @@ export default function App() {
           <Route path='/profile' element={<Profile />} />
         </Route>
         <Route path='/meals' element={ <Meal/>} />         
-        <Route path='/homes' element={ <Home/>} />         
+        <Route path='/homes' element={ <Home/>} />      
+        <Route path="/forget-passw" element={<ForgetPassw />} />
+        <Route path="/reset-passw" element={<ResetPassword />} />
+
       </Routes>
     </BrowserRouter>
   );

@@ -76,3 +76,27 @@ export const signOut = async (req, res, next) => {
     next(error);
   }
 };
+export const resetPassword = async (req, res, next) => {
+  const { token, password } = req.body;
+
+  // Verify token logic
+  // This part of the code should include the actual token verification logic
+  // For example, you can use a library like jsonwebtoken to verify the token
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+
+    // Hash the new password
+    const hashedPassword = bcryptjs.hashSync(password, 10);
+    
+    // Update the user's password in the database
+    await User.findByIdAndUpdate(userId, { password: hashedPassword });
+
+    res.json({ success: true, message: 'Password has been reset successfully.' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { signup, signin, google, signOut, resetPassword };
+
